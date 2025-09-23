@@ -657,7 +657,7 @@ button {
   display: inline-block;
   text-decoration: none;
   text-align: center;
-  background-image: url("assets/images/btn-cover.png");
+  background-image: url(assets/images/btn-cover.png);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -870,7 +870,7 @@ button {
 }
 
 .service .service-item-container {
-  background-image: url("assets/images/service-bg.png");
+  background-image: url(assets/images/service-bg.png);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: left center;
