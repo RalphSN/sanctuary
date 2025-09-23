@@ -392,6 +392,8 @@ button {
 .footer .footer-info {
   margin-top: 2rem;
   display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 .footer .footer-info .footer-logo {
   margin-bottom: 1rem;
@@ -432,7 +434,7 @@ button {
   width: 700px;
 
   @media (max-width: 640px) {
-    width: 330px;
+    width: 340px;
   }
 }
 .footer .footer-address .footer-address__content {
@@ -515,6 +517,7 @@ button {
   height: 100%;
   display: flex;
   flex-direction: column;
+  max-width: 600px;
 
   @media (max-width: 1024px) {
     display: none;
@@ -526,6 +529,7 @@ button {
   height: auto;
   object-fit: cover;
   margin-top: auto;
+  max-width: 600px;
 }
 
 .cover .cover-bg-right {
@@ -554,6 +558,11 @@ button {
 
   @media (max-width: 1024px) {
     margin: 0 auto;
+  }
+
+  @media (min-width: 1024px) {
+    width: 500px;
+    margin-bottom: 2rem;
   }
 }
 
