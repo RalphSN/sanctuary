@@ -908,6 +908,11 @@ button {
   align-items: center;
   width: 100%;
   padding-left: 2rem;
+  position: relative;
+
+  @media (min-width: 1000px) {
+    pointer-events: none;
+  }
 
   @media (max-width: 767px) {
     height: 9rem;
@@ -936,6 +941,21 @@ button {
   transform: translateY(-80px);
 }
 
+/* .service-item.item1::after {
+  content: "専門スタッフが迅速に対応し、プレイヤーの疑問や問題を解決。快適なゲーム体験と高い満足度をサポートします。";
+  color: #8dc63f;
+  position: absolute;
+  left: 102%;
+  top: 50%;
+  transform: translateY(-56%);
+  font-size: 14px;
+  line-height: 1.5;
+  z-index: 1;
+  padding: 10px;
+  border-radius: 5px;
+  width: 500px;
+} */
+
 .service .service-item-container .service-item img {
   object-fit: contain;
   height: 100%;
@@ -951,13 +971,60 @@ button {
   font-size: 2.5rem;
 
   @media (max-width: 767px) {
-    font-size: 1.5rem;
-  }
-  @media (max-width: 430px) {
     font-size: 0.7rem;
     white-space: nowrap;
     margin-right: 0.2rem;
   }
+}
+
+.service .service-texts {
+  max-width: 50%;
+  height: calc(100vh - 90px);
+  margin-top: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
+}
+
+.service .service-text {
+  height: 10.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.service-text:nth-child(1) {
+  transform: translateY(80px);
+  color: #8dc63f;
+}
+.service-text:nth-child(2) {
+  transform: translateY(20px);
+  color: #ffcd40;
+  @media (max-width: 430px) {
+    transform: translateY(45px);
+  }
+}
+.service-text:nth-child(3) {
+  transform: translateY(0);
+  color: #3ac2d8;
+}
+.service-text:nth-child(4) {
+  transform: translateY(-20px);
+  color: #d33d81;
+  @media (max-width: 430px) {
+    transform: translateY(-45px);
+  }
+}
+.service-text:nth-child(5) {
+  transform: translateY(-65px);
+  color: #713fd1;
 }
 
 .works {
@@ -1133,4 +1200,357 @@ button {
   opacity: 1;
   transform: scale(1);
   visibility: visible !important;
+}
+
+/* Lightbox */
+
+.custom-lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.custom-lightbox.active {
+  display: flex;
+  opacity: 1;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  animation: lightboxSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -60px;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 1000000;
+  font-family: Arial, sans-serif;
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.1);
+}
+
+.lightbox-close:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
+}
+
+/* ===== 文字內容樣式 ===== */
+.lightbox-text {
+  padding: 40px;
+  font-size: 22px;
+  line-height: 1.8;
+  letter-spacing: 0.1rem;
+  text-align: center;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  font-feature-settings: "palt" 1; /* 日文標點優化 */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.lightbox-text::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* 各項目專用樣式 */
+.lightbox-text.text1 {
+  /* background: linear-gradient(135deg, #3d4a3d 0%, #8dc63f 100%); */
+  background-color: #8dc63f;
+}
+
+.lightbox-text.text1::after {
+  content: "🎧";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 40px;
+  opacity: 0.3;
+}
+
+.lightbox-text.text2 {
+  /* background: linear-gradient(135deg, #5a4a42 0%, #f39800 100%); */
+  background-color: #ffcd40;
+    /* color: #4a4a4a; */
+}
+
+.lightbox-text.text2::after {
+  content: "⚙️";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 40px;
+  opacity: 0.3;
+}
+
+.lightbox-text.text3 {
+  /* background: linear-gradient(135deg, #34495e 0%, #3ac2d8 100%); */
+  background-color: #3ac2d8;
+
+}
+
+.lightbox-text.text3::after {
+  content: "🎮";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 40px;
+  opacity: 0.3;
+}
+
+.lightbox-text.text4 {
+  /* background: linear-gradient(135deg, #4a4a4a 0%, #d33d81 100%); */
+  background-color: #d33d81;
+}
+
+.lightbox-text.text4::after {
+  content: "📈";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 40px;
+  opacity: 0.3;
+}
+
+.lightbox-text.text5 {
+  /* background: linear-gradient(135deg, #2c2c54 0%, #713fd1 100%); */
+  background-color: #713fd1;
+}
+
+.lightbox-text.text5::after {
+  content: "🎨";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 40px;
+  opacity: 0.3;
+}
+
+/* ===== 響應式設計 ===== */
+
+/* 桌面版 (1200px+) */
+@media (min-width: 1200px) {
+  .lightbox-text {
+    padding: 50px;
+    font-size: 20px;
+    line-height: 2;
+    max-width: 700px;
+  }
+
+  .lightbox-close {
+    top: -80px;
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+  }
+}
+
+/* 筆電版 (768px - 1199px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .lightbox-text {
+    padding: 35px;
+    font-size: 18px;
+    line-height: 1.8;
+    max-width: 600px;
+  }
+
+  .lightbox-close {
+    top: -70px;
+    width: 45px;
+    height: 45px;
+    font-size: 22px;
+  }
+}
+
+/* 平板版 (481px - 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+  .lightbox-content {
+    max-width: 95%;
+    margin: 20px;
+  }
+
+  .lightbox-text {
+    padding: 30px;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .lightbox-close {
+    top: -60px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+}
+
+/* 手機版 (≤ 480px) */
+@media (max-width: 480px) {
+  .lightbox-content {
+    max-width: 98%;
+    margin: 10px;
+  }
+
+  .lightbox-text {
+    padding: 25px 20px;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .lightbox-text::after {
+    top: -10px !important;
+    right: 15px !important;
+    font-size: 30px !important;
+  }
+
+  .lightbox-close {
+    top: -50px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+}
+
+/* 超小螢幕 (≤ 320px) */
+@media (max-width: 320px) {
+  .lightbox-text {
+    padding: 20px 15px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .lightbox-text::after {
+    display: none;
+  }
+
+  .lightbox-close {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+}
+
+/* ===== 動畫效果 ===== */
+@keyframes lightboxSlideIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes lightboxSlideOut {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8) translateY(-30px);
+  }
+}
+
+.custom-lightbox.closing .lightbox-content {
+  animation: lightboxSlideOut 0.3s ease-in forwards;
+}
+
+/* ===== 防止背景滾動  ===== */
+body.lightbox-open {
+  overflow: hidden;
+}
+
+/* ===== 可訪問性 ===== */
+.custom-lightbox {
+  touch-action: none;
+}
+
+.lightbox-text {
+  touch-action: pan-y;
+}
+
+.lightbox-close {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 高對比度模式支援 */
+@media (prefers-contrast: high) {
+  .lightbox-text {
+    border: 2px solid white;
+  }
+
+  .lightbox-close {
+    border-width: 3px;
+    background: rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* 減少動畫偏好支援 */
+@media (prefers-reduced-motion: reduce) {
+  .lightbox-content {
+    animation: none;
+  }
+
+  .custom-lightbox,
+  .lightbox-close {
+    transition: none;
+  }
+}
+
+/* 列印時隱藏 */
+@media print {
+  .custom-lightbox {
+    display: none !important;
+  }
 }
