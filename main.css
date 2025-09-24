@@ -1005,14 +1005,14 @@ button {
   color: #8dc63f;
 }
 .service-text:nth-child(2) {
-  transform: translateY(20px);
+  transform: translateY(32px);
   color: #ffcd40;
   @media (max-width: 430px) {
     transform: translateY(45px);
   }
 }
 .service-text:nth-child(3) {
-  transform: translateY(0);
+  transform: translateY(6px);
   color: #3ac2d8;
 }
 .service-text:nth-child(4) {
@@ -1023,7 +1023,7 @@ button {
   }
 }
 .service-text:nth-child(5) {
-  transform: translateY(-65px);
+  transform: translateY(-62px);
   color: #713fd1;
 }
 
